@@ -1,20 +1,8 @@
 const olev = document.querySelector("#events");
 let olcode = document.querySelector("#codes");
 
-let clientEvents = ["click","resize", "load", "scroll", "mouseenter", "keydown", "keyup","keypress","focus", "mouseover","mouseout", "mouseup", "select", "change"];
+const clientEvents = ["click","resize", "load", "scroll", "mouseenter", "keydown", "keyup","keypress","focus", "mouseover","mouseout", "mouseup", "select", "change"];
 
-// function clientEvent(eventType){
-//     eventType.map((el)=>{
-//         if(el){
-//             window.addEventListener(el, ()=>{
-//                 eventType.push(el);
-//                 let li = document.createElement("li");
-//                 li.innerText += el;
-//                 ol.appendChild(li);
-//             })
-//         }
-//     })
-// }
 
 function qsort(arr){
     if(arr.length <2){
@@ -29,33 +17,29 @@ function qsort(arr){
 
 function clientEvent(eventType){
     let array =[]
- eventType.map((el)=>{
+    eventType.map((el)=>{
         if(el){
             window.addEventListener(el, ()=>{
-                // eventType.push(el);
                 let li = document.createElement("li");
                 li.innerText += el;
                 olev.appendChild(li);
             })
         }
-         if(el === "keyup"){
+        if(el === "keyup"){
             window.addEventListener(el, (e)=>{
                 
-                let div1 = document.createElement("ol");
-                let c= [];
+                let div = document.createElement("div");
                     array.push(e.code);
-                    let a = qsort(array);
-                    
-                    console.log(a);
-                    for(let i =0; i<a.length; i++){
+                    let sortedArr = qsort(array);
 
+                    for(let i =0; i<sortedArr.length; i++){
                         olcode.innerHTML ="";
                         let li = document.createElement("li");
-                        li.innerText = a[i];
-                        div1.appendChild(li)
+                        li.innerText = sortedArr[i];
+                        div.appendChild(li)
                         
                     }
-                    olcode.appendChild(div1);
+                    olcode.appendChild(div);
             })    
         }
     })
