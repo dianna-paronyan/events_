@@ -5,11 +5,16 @@
 }
 
 .root{
-    width: 100vw;
+    
     height: 101vh;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 18px;
     font-family: 'Times New Roman', Times, serif;
+    
+}
+
+ol{
+    margin-left: 100px;
 }
